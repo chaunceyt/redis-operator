@@ -1,0 +1,27 @@
+apiVersion: redis.module.operator.io/v1alpha1
+kind: Redis
+metadata:
+  name: redis-cache
+spec:
+  global:
+    #password: secret123#
+    # Resources.
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+
+  # Redis modules
+
+  # "A graph database with an open Cypher-based querying language."
+  graph: 
+    enabled: false
+  
+  # "A JSON data type for Redis."
+  json: 
+    enabled: false
+
+  # "Search engine over Redis."
+  search:
+    enabled: false
+
