@@ -7,13 +7,32 @@ metadata:
   name: manager-role
 rules:
 - apiGroups:
-  - credis.module.operator.io
+  - ""
   resources:
-  - redis/status
+  - configmaps
+  - persistentvolumeclaims
+  - pods
+  - services
   verbs:
+  - create
+  - delete
   - get
+  - list
   - patch
   - update
+  - watch
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
 - apiGroups:
   - redis.module.operator.io
   resources:
@@ -31,4 +50,12 @@ rules:
   resources:
   - redis/finalizers
   verbs:
+  - update
+- apiGroups:
+  - redis.module.operator.io
+  resources:
+  - redis/status
+  verbs:
+  - get
+  - patch
   - update

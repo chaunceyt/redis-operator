@@ -17,4 +17,25 @@ A Golang based Redis operator that will make/manage Redis in standalone mode on 
 * Affinity and node selector
 
 
+## Usage
+
+```
+# Create a single node KinD cluster.
+kind create cluster
+
+# Install CRD
+make install
+
+# Deploy operator to cluster.
+make deploy
+
+# Create some redis custom resources.
+
+# Deploy redis environment
+kubectl apply -f config/samples/redis-as-a-graph-database.yaml
+kubectl apply -f config/samples/redis-as-a-search-engine.yaml
+kubectl apply -f config/samples/redis-as-a-cache-engine.yaml
+```
+
+
 

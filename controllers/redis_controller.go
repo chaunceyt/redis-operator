@@ -49,8 +49,10 @@ type RedisReconciler struct {
 }
 
 // +kubebuilder:rbac:groups=redis.module.operator.io,resources=redis,verbs=get;list;watch;create;update;patch;delete
-// +kubebuilder:rbac:groups=credis.module.operator.io,resources=redis/status,verbs=get;update;patch
+// +kubebuilder:rbac:groups=redis.module.operator.io,resources=redis/status,verbs=get;update;patch
 // +kubebuilder:rbac:groups=redis.module.operator.io,resources=redis/finalizers,verbs=update
+// +kubebuilder:rbac:groups=apps,resources=deployments,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups="",resources=pods;configmaps;services;persistentvolumeclaims,verbs=get;list;watch;create;update;patch;delete
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.
@@ -178,7 +180,7 @@ func (r *RedisReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl
 // deploymentForMemcached returns a memcached Deployment object
 // https://blog.questionable.services/article/kubernetes-deployments-configmap-change/
 func (r *RedisReconciler) deploymentForRedis(redis *cachev1alpha1.Redis) *appsv1.Deployment {
-	containerImage := "chaunceyt/custom-redis:v0.0.1"
+	containerImage := "chaunceyt/redis-modules:v1.0.0"
 	ls := labelsForRedis(redis, "deployment")
 	replicas := int32(1)
 	command := []string{"redis-server", "/opt/redis/redis.conf"}
