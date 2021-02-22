@@ -30,15 +30,24 @@ type RedisSpec struct {
 	// Important: Run "make" to regenerate code after modifying this file
 	GlobalConfig GlobalConfig `json:"global"`
 
-	RedisSearch RedisSearch `json:"search"`
-	RedisJSON   RedisJSON   `json:"json"`
-	RedisGraph  RedisGraph  `json:"graph"`
+	RedisBloom      RedisBloom      `json:"bloom"`
+	RedisGraph      RedisGraph      `json:"graph"`
+	RedisJSON       RedisJSON       `json:"json"`
+	RedisSearch     RedisSearch     `json:"search"`
+	RedisTimeSeries RedisTimeSeries `json:"timeSeries"`
 }
 
 // GlobalConfig will be the JSON struct for Basic Redis Config
 type GlobalConfig struct {
 	Password  string                      `json:"password,omitempty"`
 	Resources corev1.ResourceRequirements `json:"resources,omitempty"`
+}
+
+type RedisBloom struct {
+	Enabled bool `json:"enabled"`
+}
+type RedisTimeSeries struct {
+	Enabled bool `json:"enabled"`
 }
 
 type RedisGraph struct {

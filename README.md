@@ -6,7 +6,7 @@ A Golang based Redis operator that will make/manage Redis in standalone mode on 
 
 
 * Redis standalone mode setup
-* Enable Redis Modules:  [RedisGraph](https://oss.redislabs.com/redisgraph/), [RedisJSON](https://oss.redislabs.com/redisjson/) and/or [RedisSearch](https://oss.redislabs.com/redisearch/)
+* Enable Redis Modules:  [RedisGraph](https://oss.redislabs.com/redisgraph/), [RedisJSON](https://oss.redislabs.com/redisjson/), [RedisBloom](https://oss.redislabs.com/redisbloom/), [RedisTimeSeries](https://github.com/RedisTimeSeries/RedisTimeSeries/blob/master/docs/index.md) and/or [RedisSearch](https://oss.redislabs.com/redisearch/)
 * Password/Password-less setup
 * Resources restrictions with k8s requests
 * SecurityContext to create immutable pods during runtime.
@@ -18,6 +18,7 @@ A Golang based Redis operator that will make/manage Redis in standalone mode on 
 
 
 ## Usage
+
 
 ```
 # Create a single node KinD cluster.

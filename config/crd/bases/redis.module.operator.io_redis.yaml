@@ -36,6 +36,13 @@ spec:
           spec:
             description: RedisSpec defines the desired state of Redis
             properties:
+              bloom:
+                properties:
+                  enabled:
+                    type: boolean
+                required:
+                - enabled
+                type: object
               global:
                 description: 'INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
                   Important: Run "make" to regenerate code after modifying this file'
@@ -91,11 +98,20 @@ spec:
                 required:
                 - enabled
                 type: object
+              timeSeries:
+                properties:
+                  enabled:
+                    type: boolean
+                required:
+                - enabled
+                type: object
             required:
+            - bloom
             - global
             - graph
             - json
             - search
+            - timeSeries
             type: object
           status:
             description: RedisStatus defines the observed state of Redis

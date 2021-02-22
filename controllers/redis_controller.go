@@ -407,6 +407,18 @@ maxmemory-policy allkeys-lru
 		redisConfigFileContent = fmt.Sprintf("%sloadmodule %s\n", redisConfigFileContent, "/usr/lib/redis/modules/redisearch.so")
 	}
 
+	// Enable redisBloom
+	// https://github.com/RedisBloom/RedisBloom
+	if redis.Spec.RedisBloom.Enabled {
+		redisConfigFileContent = fmt.Sprintf("%sloadmodule %s\n", redisConfigFileContent, "/usr/lib/redis/modules/redisbloom.so")
+	}
+
+	// Enable redisTimeSeries
+	// https://github.com/RedisTimeSeries/RedisTimeSeries
+	if redis.Spec.RedisTimeSeries.Enabled {
+		redisConfigFileContent = fmt.Sprintf("%sloadmodule %s\n", redisConfigFileContent, "/usr/lib/redis/modules/redistimeseries.so")
+	}
+
 	dep := &corev1.ConfigMap{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      redis.Name,
